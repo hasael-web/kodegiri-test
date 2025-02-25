@@ -1,0 +1,59 @@
+/* Styling daftar user */
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.user-item:hover {
+  transform: scale(1.02);
+}
+
+/* Styling teks */
+.user-item p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Container untuk tombol */
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+/* Styling tombol */
+.btn-incre,
+.btn-decre {
+  border: none;
+  padding: 6px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.btn-incre {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-decre {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-incre:hover {
+  background-color: #388e3c;
+}
+
+.btn-decre:hover {
+  background-color: #d32f2f;
+}

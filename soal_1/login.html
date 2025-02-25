@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login dengan LocalStorage</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .hidden {
+        display: none;
+      }
+      .container {
+        text-align: center;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input {
+        display: block;
+        margin: 10px 0;
+        padding: 8px;
+        width: 100%;
+      }
+      button {
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Halaman Login</h2>
+      <input type="text" id="username" placeholder="Masukkan Username" />
+      <input type="password" id="password" placeholder="Masukkan Password" />
+      <button id="loginBtn">Login</button>
+
+      <h3 id="welcomeText" class="hidden"></h3>
+      <button id="logoutBtn" class="hidden">Logout</button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const loginBtn = document.getElementById("loginBtn");
+        const logoutBtn = document.getElementById("logoutBtn");
+        const welcomeText = document.getElementById("welcomeText");
+
+        // Cek apakah user sudah login sebelumnya
+        const storedUser = localStorage.getItem("username");
+
+        if (storedUser) {
+          showWelcome(storedUser);
+        }
+
+        loginBtn.addEventListener("click", () => {
+          const username = usernameInput.value.trim();
+          const password = passwordInput.value.trim();
+
+          if (username && password) {
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password); // ⚠️ Jangan simpan password di production
+            showWelcome(username);
+          } else {
+            alert("Username dan Password wajib diisi!");
+          }
+        });
+
+        logoutBtn.addEventListener("click", () => {
+          localStorage.clear();
+          showLoginForm();
+        });
+
+        function showWelcome(username) {
+          welcomeText.textContent = `Selamat Datang, ${username}!`;
+          welcomeText.classList.remove("hidden");
+          logoutBtn.classList.remove("hidden");
+
+          usernameInput.classList.add("hidden");
+          passwordInput.classList.add("hidden");
+          loginBtn.classList.add("hidden");
+        }
+
+        function showLoginForm() {
+          welcomeText.classList.add("hidden");
+          logoutBtn.classList.add("hidden");
+
+          usernameInput.classList.remove("hidden");
+          passwordInput.classList.remove("hidden");
+          loginBtn.classList.remove("hidden");
+
+          usernameInput.value = "";
+          passwordInput.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>

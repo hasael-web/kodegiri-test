@@ -1,0 +1,46 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "age": 28,
+      "gender": "Male",
+      "role": "Admin",
+      "isActive": true,
+      "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "country": "USA"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "age": 25,
+      "gender": "Female",
+      "role": "User",
+      "isActive": false,
+      "address": {
+        "street": "456 Maple Ave",
+        "city": "Los Angeles",
+        "country": "USA"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Michael Johnson",
+      "email": "michaelj@example.com",
+      "age": 32,
+      "gender": "Male",
+      "role": "Moderator",
+      "isActive": true,
+      "address": {
+        "street": "789 Oak Dr",
+        "city": "Chicago",
+        "country": "USA"
+      }
+    }
+  ]
+}

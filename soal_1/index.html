@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <script></script>
+  <body>
+    <div>
+      <h1>User List</h1>
+      <ul id="user-list"></ul>
+    </div>
+  </body>
+  <script>
+    const userList = document.getElementById("user-list");
+    userList.innerHTML = "";
+    const userData = fetch("data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        data?.user?.forEach((user) => {
+          const li = document.createElement("li");
+          const buttonIncre = document.createElement("button");
+          const buttonDecre = document.createElement("button");
+          const containerButton = document.createElement("div");
+          const text = document.createElement("p");
+
+          let age = user.age || 0;
+
+          buttonIncre.textContent = "+";
+          buttonDecre.textContent = "-";
+
+          buttonDecre.addEventListener("click", function (e) {
+            if (age > 0) {
+              age--;
+              text.textContent = `${user.name} - ${age} Age`;
+            }
+          });
+          buttonIncre.addEventListener("click", function (e) {
+            age++;
+            text.textContent = `${user.name} - ${age} Age`;
+          });
+
+          text.textContent = `${user.name} - ${age} Age`;
+
+          // Styling tombol
+          buttonIncre.classList.add("btn-incre");
+          buttonDecre.classList.add("btn-decre");
+
+          // Styling container tombol
+          containerButton.classList.add("button-container");
+
+          // Styling elemen <li>
+          li.classList.add("user-item");
+
+          // Menyusun elemen ke dalam <li>
+          containerButton.appendChild(buttonDecre);
+          containerButton.appendChild(buttonIncre);
+
+          li.appendChild(text);
+          li.appendChild(containerButton);
+
+          userList.appendChild(li);
+        });
+      })
+      .catch((err) => console.error(err));
+  </script>
+</html>
