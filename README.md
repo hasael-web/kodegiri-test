@@ -1,4 +1,26 @@
-### File Tree
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/hasael-web/kodegiri-test.git
+```
+
+Go to the project directory
+
+```bash
+  cd kodegiri-test
+```
+
+## Installation
+
+Install my-project with yarn
+
+```bash
+  yarn install
+```
+
+    ## File Tree
 
 kodegiri-test/
 ├─ express/
